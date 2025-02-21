@@ -40,14 +40,14 @@ class Conjunto:
     def __str__(self):
         return "{" + ", ".join(map(str, self.elementos)) + "}"
 
-    def propiedades(self):
+    def propiedades(self, segundo, tercero):
         return "\n".join([
-            f"Conmutatividad Unión: {self.union([self]).elementos == self.union([self]).elementos}",
-            f"Conmutatividad Intersección: {self.interseccion([self]).elementos == self.interseccion([self]).elementos}",
-            f"Asociatividad Unión: {self.union([self.union([self])]).elementos == self.union([self]).union([self]).elementos}",
-            f"Asociatividad Intersección: {self.interseccion([self.interseccion([self])]).elementos == self.interseccion([self]).interseccion([self]).elementos}",
-            f"Distributividad: {self.union([self.interseccion([self])]).elementos == self.interseccion([self.union([self])]).elementos}",
-            f"Idempotencia: {self.union([self]).elementos == self.elementos and self.interseccion([self]).elementos == self.elementos}"
+            f"A ∪ B = B ∪ A: {self.union([segundo]).elementos == segundo.union([self]).elementos}",
+            f"A ∩ B = B ∩ A: {self.interseccion([segundo]).elementos == segundo.interseccion([self]).elementos}",
+            f"(A ∪ B) ∪ C = A ∪ (B ∪ C): {tercero.union([self.union([segundo])]).elementos == self.union([segundo]).union([tercero]).elementos}",
+            f"(A ∩ B) ∩ C = A ∩ (B ∩ C): {self.interseccion([self.interseccion([self])]).elementos == self.interseccion([self]).interseccion([self]).elementos}",
+            f"A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C): {self.union([self.interseccion([self])]).elementos == self.interseccion([self.union([self])]).elementos}",
+            f"A ∪ A = A, A ∩ A = A: {self.union([self]).elementos == self.elementos and self.interseccion([self]).elementos == self.elementos}"
         ])
 
 
@@ -64,4 +64,4 @@ print("Diferencia:", A.diferencia(B))
 print("Diferencia Simétrica:", A.diferencia_simetrica(B))
 print("D es subconjunto de B:", D.es_subconjunto(B))
 print("B es superconjunto de D:", B.es_superconjunto(D))
-print("Propiedades:", A.propiedades())
+print("Propiedades:", A.propiedades(B,C))
