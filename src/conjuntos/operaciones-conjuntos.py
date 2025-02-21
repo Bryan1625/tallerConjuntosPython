@@ -41,14 +41,16 @@ class Conjunto:
         return "{" + ", ".join(map(str, self.elementos)) + "}"
 
     def propiedades(self):
-        return {
-            "Conmutatividad Unión": self.union([self]).elementos == self.union([self]).elementos,
-            "Conmutatividad Intersección": self.interseccion([self]).elementos == self.interseccion([self]).elementos,
-            "Asociatividad Unión": self.union([self.union([self])]).elementos == self.union([self]).union([self]).elementos,
-            "Asociatividad Intersección": self.interseccion([self.interseccion([self])]).elementos == self.interseccion([self]).interseccion([self]).elementos,
-            "Distributividad": self.union([self.interseccion([self])]).elementos == self.interseccion([self.union([self])]).elementos,
-            "Idempotencia": self.union([self]).elementos == self.elementos and self.interseccion([self]).elementos == self.elementos
-        }
+        return "\n".join([
+            f"Conmutatividad Unión: {self.union([self]).elementos == self.union([self]).elementos}",
+            f"Conmutatividad Intersección: {self.interseccion([self]).elementos == self.interseccion([self]).elementos}",
+            f"Asociatividad Unión: {self.union([self.union([self])]).elementos == self.union([self]).union([self]).elementos}",
+            f"Asociatividad Intersección: {self.interseccion([self.interseccion([self])]).elementos == self.interseccion([self]).interseccion([self]).elementos}",
+            f"Distributividad: {self.union([self.interseccion([self])]).elementos == self.interseccion([self.union([self])]).elementos}",
+            f"Idempotencia: {self.union([self]).elementos == self.elementos and self.interseccion([self]).elementos == self.elementos}"
+        ])
+
+
 
 # Ejemplo de uso:
 A = Conjunto([1, 2, 3])
