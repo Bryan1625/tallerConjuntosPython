@@ -1,4 +1,4 @@
-class UnionDeConjuntos:
+class Conjunto:
     def __init__(self, elementos):
         self.elementos = []
         for e in elementos:
