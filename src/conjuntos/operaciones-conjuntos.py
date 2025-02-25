@@ -165,7 +165,6 @@ print("\nConjuntos:")
 print("Conjunto A:", A.representacion())
 print("Conjunto B:", B.representacion())
 print("Conjunto C:", C.representacion() + "\n")
-
 print("Unión A ∪ B = ", A.union([B]).representacion() + "\n")
 print("Intersección A ∩ B = ", A.interseccion([B]).representacion() + "\n")
 print("Diferencia A - B = ", A.diferencia(B).representacion() + "\n")
