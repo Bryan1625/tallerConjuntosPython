@@ -145,22 +145,33 @@ class Conjunto:
     
 
 
-# Ejemplo de uso:
-A = Conjunto([1, 2, 3])
-B = Conjunto([3, 4, 5])
-C = Conjunto([5, 6, 7])
+# Solicitar al usuario que ingrese los elementos de los conjuntos
+def ingresar_conjunto(nombre):
+    elementos = []
+    print(f"Ingrese los elementos del conjunto {nombre} uno por uno. Escriba 'fin' para terminar y \ncontinuar con el siguiente conjunto:")
+    while True:
+        elemento = input("Elemento: ")
+        if elemento.lower() == 'fin':
+            break
+        elementos.append(elemento)
+    return Conjunto(elementos)
 
-print("Conjuntos:")
+# Ejemplo de uso:
+A = ingresar_conjunto("A")
+B = ingresar_conjunto("B")
+C = ingresar_conjunto("C")
+
+print("\nConjuntos:")
 print("Conjunto A:", A.representacion())
 print("Conjunto B:", B.representacion())
 print("Conjunto C:", C.representacion() + "\n")
 
+print("Unión A ∪ B = ", A.union([B]).representacion() + "\n")
+print("Intersección A ∩ B = ", A.interseccion([B]).representacion() + "\n")
+print("Diferencia A - B = ", A.diferencia(B).representacion() + "\n")
+print("Diferencia Simétrica A Δ B = ", A.diferencia_simetrica(B).representacion() + "\n")
+print("Subconjunto A ⊂ B = ", A.es_subconjunto(B))
+print("")
+print("Superconjunto B ⊃ A = ", B.es_superconjunto(A))
+print("\nPropiedades:\n" + A.propiedades(B, C))
 
-
-print("Unión:", A.union([B]).representacion() + "\n")
-print("Intersección:", A.interseccion([B]).representacion() + "\n")
-print("Diferencia:", A.diferencia(B).representacion() + "\n")
-print("Diferencia Simétrica:", A.diferencia_simetrica(B).representacion() + "\n")
-print("A es subconjunto de B:", A.es_subconjunto(B))
-print("B es superconjunto de A:", B.es_superconjunto(A) )
-print("\n" , A.propiedades(B, C))
